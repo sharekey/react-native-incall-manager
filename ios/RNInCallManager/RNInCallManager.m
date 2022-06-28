@@ -455,25 +455,19 @@ RCT_EXPORT_METHOD(getIsWiredHeadsetPluggedIn:(RCTPromiseResolveBlock)resolve
         // --- force ON, override speaker only, keep audio mode remain.
         overrideAudioPort = AVAudioSessionPortOverrideSpeaker;
         overrideAudioPortString = @".Speaker";
-        if ([_media isEqualToString:@"video"]) {
-            audioMode = AVAudioSessionModeVideoChat;
-            [self stopProximitySensor];
-        }
+        audioMode = AVAudioSessionModeVideoChat;
+        [self stopProximitySensor];
     } else if (_forceSpeakerOn == -1) {
         // --- force off
         overrideAudioPort = AVAudioSessionPortOverrideNone;
         overrideAudioPortString = @".None";
-        if ([_media isEqualToString:@"video"]) {
-            audioMode = AVAudioSessionModeVoiceChat;
-            [self startProximitySensor];
-        }
+        audioMode = AVAudioSessionModeVoiceChat;
+        [self startProximitySensor];
     } else { // use default behavior
         overrideAudioPort = AVAudioSessionPortOverrideNone;
         overrideAudioPortString = @".None";
-        if ([_media isEqualToString:@"video"]) {
-            audioMode = AVAudioSessionModeVideoChat;
-            [self stopProximitySensor];
-        }
+        audioMode = AVAudioSessionModeVideoChat;
+        [self stopProximitySensor];
     }
 
     BOOL isCurrentRouteToSpeaker;
